@@ -25,7 +25,11 @@ Function Sinicize-Numbers {
 
   Foreach ($Num_Input in $Inputs) {
 
+    # Remove characters in input numbers that are not Arabic numerals.
+    # Remove leading zeros unless the given number is a single 0.
     $String_Input = "$Num_Input" -replace '\D', '' -replace '^0+(.)', '$1'
+
+    # Split the number into single numerals and convert them respectively.
     $Array_Input = [Char[]]$String_Input
     $Array_Output = Foreach (
       $i in ($Bitname.Count..1 -le $String_Input.Length)
@@ -33,6 +37,7 @@ Function Sinicize-Numbers {
       $Arabic_to_Chs.[String]($Array_Input[-$i]) + $Bitname[-$i]
     }
 
+    # Handle edge cases, most of which are about zeros.
     $String_Output = [String]::Join("", $Array_Output) `
       -replace "零(?:千|百|十)", '零' `
       -replace "零+", "零" `
@@ -41,6 +46,7 @@ Function Sinicize-Numbers {
       -replace "(.)零+$", '$1' `
       -replace "^一十", '十'
 
+    # Return/Output
     If ($EchoInput) { $Num_Input }
     $String_Output
   }
