@@ -1,11 +1,12 @@
-Function Sinicize-Number {
+Function Sinicize-Numbers {
   param(
     [Switch]$EchoInput,
     $Inputs = $(Read-Host '输入16位以内阿拉伯数字(或由其组成的数列)')
   )
 
   $Bitname = '千','百','十','万','千','百','十','亿','千','百','十','万','千','百','十',''
-  $Arabic_to_Chs = @{ '0'='零'; '1'='一'; '2'='二'; '3'='三'; '4'='四'; '5'='五'; '6'='六'; '7'='七'; '8'='八'; '9'='九'}
+  $Arabic_to_Chs = @{'0'='零'; '1'='一'; '2'='二'; '3'='三'; '4'='四'; '5'='五'; '6'='六'; '7'='七'; '8'='八'; '9'='九'}
+
   Foreach ($Num_Input in $Inputs) {
 
     $String_Input = "$Num_Input" -replace '\D', '' -replace '^0+(.)', '$1'
@@ -34,9 +35,9 @@ Function Sinicize-Number {
 
     $ . Path\to\Arabic-num-to-Chinese.ps1
 
-  Then use function Sinicize-Number to convert a Arabic number to a Chinese one:
+  Then use function Sinicize-Numbers to convert a Arabic number to a Chinese one:
 
-    $ Sinicize-Number -EchoInput 1003045, 2403, 529202941
+    $ Sinicize-Numbers -EchoInput 1003045, 2403, 529202941
     1003045
     一百万三千零四十五
     2403
