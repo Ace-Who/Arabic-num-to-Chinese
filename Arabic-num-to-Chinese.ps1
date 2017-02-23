@@ -32,15 +32,16 @@ Function Sinicize-Numbers {
     ) {
       $Arabic_to_Chs.[String]($Array_Input[-$i]) + $Bitname[-$i]
     }
-    If ($EchoInput) { $Num_Input }
 
-    $String_Output = [String]::Join("", $Array_Output)
-    $String_Output = $String_Output -replace "零(?:千|百|十)", '零'
-    $String_Output = $String_Output -replace "零+", "零"
-    $String_Output = $String_Output -replace "零(亿|万)", '$1'
-    $String_Output = $String_Output -replace "亿万零?", '亿零'
-    $String_Output = $String_Output -replace "(.)零+$", '$1'
-    $String_Output = $String_Output -replace "^一十", '十'
+    $String_Output = [String]::Join("", $Array_Output) `
+      -replace "零(?:千|百|十)", '零' `
+      -replace "零+", "零" `
+      -replace "零(亿|万)", '$1' `
+      -replace "亿万零?", '亿零' `
+      -replace "(.)零+$", '$1' `
+      -replace "^一十", '十'
+
+    If ($EchoInput) { $Num_Input }
     $String_Output
   }
 }
