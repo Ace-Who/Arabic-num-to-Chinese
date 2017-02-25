@@ -58,7 +58,7 @@ Function Sinicize-Numbers {
 
     $ . Path\to\Arabic-num-to-Chinese.ps1
 
-  Then use function Sinicize-Numbers to convert a Arabic number to a Chinese one:
+  Then use function Sinicize-Numbers to convert an Arabic number to a Chinese one:
 
     $ Sinicize-Numbers -EchoInput 1003045, 2403, 529202941
     1003045
