@@ -1,3 +1,7 @@
+# Arabic-num-to-Chinese
+
+Convert Arabic represents of numbers to Chinese ones, for example, from `1024` to `一千零二十四`。
+
 ## Usage
 
 Fisrt, dot-source this script in a PowerShell:
@@ -6,7 +10,7 @@ Fisrt, dot-source this script in a PowerShell:
 
 Then use function Sinicize-Numbers to convert an Arabic number to a Chinese one:
 
-```Console
+``` Console
 $ Sinicize-Numbers -EchoInpuont 1003045, 2403, 529202941
 1003045
 一百万三千零四十五
